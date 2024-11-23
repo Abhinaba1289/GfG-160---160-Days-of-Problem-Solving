@@ -1,0 +1,15 @@
+vector<int> findMajority(vector<int>& arr) {
+    unordered_map<int, int>mp;
+    vector<int>ans;
+    set<int>st;
+    int n = arr.size();
+    for(int i : arr){
+        mp[i]++;
+        if(st.find(i) == st.end() && mp[i] > n/3){
+            st.insert(i);
+            ans.push_back(i);
+        }
+    }
+    sort(ans.begin(), ans.end());
+    return ans;
+}
