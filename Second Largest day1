@@ -1,0 +1,14 @@
+int getSecondLargest(vector<int> &arr) {
+        sort(arr.begin(), arr.end());
+        vector<int>v;
+        if(arr.size() < 2) return -1;
+        set<int>st;
+        for(int i : arr){
+            if(st.find(i) == st.end()){
+                st.insert(i);
+                v.push_back(i);
+            }
+        }
+        if(v.size() < 2) return -1;
+        return v[v.size()-2];
+    }
