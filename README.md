@@ -15,3 +15,7 @@ Welcome to my **160 Days of Problem Solving** challenge! This journey is all abo
 
 
 
+## 🟢 Current Status
+
+**Solved:** 9 / 160 problems 🎯  
+Stay tuned for updates as I progress through the challenge! 🚀  
