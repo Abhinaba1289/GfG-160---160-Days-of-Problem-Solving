@@ -1,0 +1,35 @@
+int circularSubarraySum(vector<int> &arr) {
+        int maxi = INT_MIN, maxEnd = 0;
+        for(int i : arr){
+            maxEnd = max(i, maxEnd+i);
+            maxi = max(maxi, maxEnd );
+        }
+        if(maxi < 0) return maxi;
+        int sum =accumulate(arr.begin(), arr.end(), 0);
+        
+        int mini = INT_MAX, minEnd = 0;
+        for(int i : arr){
+            minEnd = min(i, minEnd+i);
+            mini = min(mini, minEnd );
+        }
+         
+        return max(sum  - mini, maxi);
+    }
+
+
+
+## Steps to Solve
+🏆 Find the Largest Subarray Sum (Normal):
+Use Kadane's algorithm to calculate the maximum subarray sum without wrapping.
+
+🚨 Handle the "All Negative" Case:
+If all elements are negative, the answer is the largest single element (the "least bad" number).
+
+💰 Get the Total Sum:
+Calculate the total sum of the array for the circular case.
+
+🌪️ Find the Smallest Subarray Sum:
+Use a modified Kadane's algorithm to calculate the smallest subarray sum.
+
+🔄 Compare Normal and Circular Sums:
+Use the formula total sum - minimum subarray sum for the circular case, and compare it with the normal maximum sum to find the best.
