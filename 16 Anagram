@@ -1,0 +1,12 @@
+bool areAnagrams(string& s1, string& s2) {
+    unordered_map<char, int>mp1, mp2;
+    for(char s : s1) mp1[s]++;
+    for(char s : s2) mp2[s]++;
+    for(char ch : s1){
+        if(mp1[ch] != mp2[ch]) return false;
+    }
+    for(char ch : s2){
+        if(mp1[ch] != mp2[ch]) return false;
+    }
+    return true;
+}
