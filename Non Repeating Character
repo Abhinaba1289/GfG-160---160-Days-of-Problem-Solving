@@ -1,0 +1,6 @@
+char nonRepeatingChar(string &s) {
+    unordered_map<char, int>mp;
+    for(char i : s) mp[i]++;
+    for(char i : s) if(mp[i] < 2) return i;
+    return '$';
+}
