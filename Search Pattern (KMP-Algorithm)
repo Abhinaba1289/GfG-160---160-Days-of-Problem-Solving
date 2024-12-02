@@ -1,0 +1,9 @@
+vector<int> search(string& pat, string& txt) {
+    vector<int>pos;
+    size_t p = txt.find(pat, 0);
+    while(p != string::npos){
+        pos.push_back(p);
+        p = txt.find(pat, p+1);
+    }
+    return pos;
+}
