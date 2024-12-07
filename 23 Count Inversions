@@ -1,0 +1,45 @@
+long long int merge(vector<int> &arr, long int low, long int mid, long int high){
+        long int left = low;   // starting index of first arr
+        long int right = mid + 1;  // starting index of second array
+        vector<long long>v;
+        long long int count = 0; 
+        while(left <= mid && right <= high){
+            if(arr[left] <= arr[right]){
+                v.push_back(arr[left++]);
+               
+            }else{
+                v.push_back(arr[right++]);
+                count += (mid - left + 1);
+            }
+        }
+        while(left <= mid)  v.push_back(arr[left++]);
+        while(right <= high)  v.push_back(arr[right++]); 
+        
+        for (long int i = 0; i < v.size(); i++) {
+            arr[low + i] = v[i];
+        }
+        
+        return count;
+    }
+    
+    long long int mergeSort(vector<int> &arr,int low,int high){
+        if (low >= high) {
+            return 0; // No inversions if low is not less than high
+        }   
+        long long int inv = 0;
+        
+            long int mid = low + (high - low)/2;
+            inv += mergeSort(arr, low, mid);   // merge will be called bro recursion
+            inv += mergeSort(arr, mid+1, high);
+            inv += merge(arr, low, mid, high);
+    
+        return inv;
+    }
+    
+    int inversionCount(vector<int> &arr) {
+        long int low = 0;
+        long int high = arr.size() - 1;
+        
+        long long ans = mergeSort(arr, low, high);
+        return ans;
+    }
