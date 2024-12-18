@@ -1,0 +1,41 @@
+bool ispossible(vector<int> &a, int n, int m, int midsum){
+        int student = 1;
+        int pages = 0;
+        
+        for(int i = 0; i < n; i++){
+            if(pages + a[i] <= midsum){
+                pages += a[i];
+            }
+            else{
+                student++;
+                if(student > m || a[i] > midsum){
+                    return false;
+                }
+                pages = a[i];
+            }
+        }
+        return true;
+    }
+    int findPages(vector<int> &A, int M) {
+        int N = A.size();
+        if(M>N) return -1;
+        int st = 0;
+        int ans = -1;
+        int sum = 0;
+        for(int i = 0;i < N; i++){ sum += A[i]; }
+        int end = sum;
+        int midsum = st +(end - st)/2;
+        while(st<=end){
+            
+            
+            if( ispossible(A, N, M, midsum) ){
+                ans = midsum;
+                end = midsum - 1;
+            }else{
+                st = midsum + 1;
+            }
+            midsum = st +(end - st)/2;
+        }
+        
+        return ans;
+    }
