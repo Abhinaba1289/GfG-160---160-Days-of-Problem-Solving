@@ -1,0 +1,15 @@
+int kthMissing(vector<int> &arr, int k) {
+        vector<int>missing;
+        unordered_map<int, int>mp;
+        int maxi = -1;
+        for(int i : arr){
+            mp[i]++;
+            maxi = max(maxi, i);
+        }
+        for(int i = 1; i < maxi+1; i++){
+            if(mp[i] == 0) missing.push_back(i);
+        }
+        if(missing.empty()) return maxi+k;
+        if(missing.size() < k) return maxi + (k - missing.size());
+        return missing[k-1];
+    }
