@@ -1,0 +1,24 @@
+void setMatrixZeroes(vector<vector<int>> &mat) {
+        vector<pair<int,int>>pos;
+        int n = mat.size();
+        int m = mat[0].size();
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < m; j++){
+                if(mat[i][j]==0){
+                    pos.push_back({i, j});
+                }
+            }
+        }
+        
+        for (auto i : pos) {
+            int row = i.first;
+            int col = i.second;
+            for (int j = 0; j < m; j++) {
+                mat[row][j] = 0;
+            }
+            for (int j = 0; j < n; j++) {
+                mat[j][col] = 0;
+            }
+        }
+        
+    }
