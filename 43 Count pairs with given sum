@@ -1,0 +1,10 @@
+int countPairs(vector<int> &arr, int target) {
+        unordered_map<int,int>mp;
+        int count=0;
+        for(int i : arr){
+            int complement = target - i;
+            if(mp.find(complement) != mp.end()) count+=mp[complement];
+            mp[i]++;
+        }
+        return count;
+    }
