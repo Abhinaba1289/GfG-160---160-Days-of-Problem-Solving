@@ -1,0 +1,18 @@
+vector<int> intersectionWithDuplicates(vector<int>& a, vector<int>& b) {
+        unordered_map<int, int>mp1, mp2;
+        vector<int>v;
+        set<int>st;
+        for(int i : a) mp1[i]++;
+        for(int i : b) mp2[i]++;
+        
+        for(int i : a){
+            if(mp1[i] >= 1 && mp2[i] >= 1){
+                if(st.find(i)==st.end()){
+                    st.insert(i);
+                    v.push_back(i);
+                }
+            } 
+        }
+        sort(v.begin(), v.end());
+        return v;
+    }
