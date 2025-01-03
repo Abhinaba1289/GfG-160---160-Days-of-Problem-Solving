@@ -1,0 +1,12 @@
+long subarrayXor(vector<int> &arr, int k) {
+        int count = 0;
+        int XOR = 0;
+        unordered_map<int, int>mp;
+        mp[0] = 1;
+        for(int i : arr){
+            XOR = XOR^i;
+            if(mp.find(XOR^k) != mp.end()) count+=mp[XOR^k];
+            mp[XOR]++;
+        }
+        return count;
+    }
