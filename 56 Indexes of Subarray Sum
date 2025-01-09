@@ -1,0 +1,14 @@
+vector<int> subarraySum(vector<int> &arr, int s) {
+        int i=0,j=0,sum=0, n = arr.size();
+        while(j<n) {
+            if(i==j) sum=arr[j]; 
+            else sum+=arr[j]; 
+            if(sum>=s) { 
+                while(sum>s) sum-=arr[i++]; 
+                if(i-1==j) sum=-1; 
+                if(sum==s) return{i+1,j+1}; 
+            } 
+            j++; 
+        } 
+        return{-1};
+    }
