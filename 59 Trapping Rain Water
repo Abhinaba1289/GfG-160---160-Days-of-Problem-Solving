@@ -1,0 +1,18 @@
+int maxWater(vector<int> &arr) {
+        int n = arr.size();
+        int left = 0, left_max = 0;
+        int right = n-1, right_max = 0;
+        long long sum = 0;
+        while(left < right){
+            if(arr[left] < arr[right]){ // rain water stored in left side
+                if(arr[left] >= left_max) left_max = arr[left];
+                else sum += left_max - arr[left];
+                left++;
+            }else{
+                if(arr[right] >= right_max) right_max = arr[right];
+                else sum += right_max - arr[right];
+                right--;
+            }
+        }
+        return sum;
+    }
