@@ -1,0 +1,13 @@
+int maxWater(vector<int> &arr) {
+        int n = arr.size();
+        int i = 0;
+        int j = n-1;
+        long long area = 0;
+        while(i < j){ 
+            long long tempwater = min(arr[i], arr[j])*(j-i); 
+            area =max(area, tempwater);
+            if(arr[i] < arr[j]) i++;
+            else j--; 
+        }
+        return area;
+    }
