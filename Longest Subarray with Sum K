@@ -1,0 +1,13 @@
+int longestSubarray(vector<int>& arr, int K)
+    { 
+        int N = arr.size();
+        unordered_map<int, int>mp;
+        int sum = 0, max_len = 0;
+        for(int i = 0; i < N; i++){
+            sum+=arr[i];
+            if(sum == K) max_len = max(max_len, i+1);
+            if(mp.find(sum-K) != mp.end()) max_len = max(max_len, i - mp[sum-K]);
+            if(mp.find(sum) == mp.end()) mp[sum] = i;
+        }
+        return max_len;
+    } 
