@@ -1,0 +1,15 @@
+Node *cloneLinkedList(Node *head) {
+        Node* temp = head;
+        unordered_map<Node*, Node*> nodeMap;
+        while (temp != nullptr) {
+            nodeMap[temp] = new Node(temp->data); 
+            temp = temp->next;
+        }
+        temp = head;
+        while (temp != nullptr) {
+            nodeMap[temp]->next = nodeMap[temp->next];  
+            nodeMap[temp]->random = nodeMap[temp->random]; 
+            temp = temp->next;
+        }
+        return nodeMap[head];
+    }
