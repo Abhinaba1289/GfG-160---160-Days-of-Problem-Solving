@@ -1,0 +1,12 @@
+vector<string> findPermutation(string &s) {
+        sort(s.begin(), s.end());
+        vector<string>ans;
+        string temp = s;
+        ans.push_back(temp);
+        next_permutation(temp.begin(), temp.end());
+        while(temp != s){
+            ans.push_back(temp);
+            next_permutation(temp.begin(), temp.end());
+        }
+        return ans;
+    }
